@@ -3,7 +3,6 @@ package matricesdispersas;
 
 import Utilidades.Matriz;
 
-//yggvnbn
 public class MatricesDispersas {
 
     public static void main(String[] args) {
