@@ -1,6 +1,7 @@
 
 package matricesdispersas;
 
+import javax.swing.JOptionPane;
 import static matricesdispersas.MatricesDispersas.Mostrar;
 
 public class Tripleta {
@@ -49,6 +50,64 @@ public class Tripleta {
         }
         
         Mostrar(A);
+    }
+    
+    public void SumarFila(){
+        int V[], k;
+        
+        V = new int[A[0][0]];
+        
+        for (k=1; k<=A[0][2]; k++)
+        {
+            if (A[k][0]==0)
+            {
+                V[0] += A[k][2];
+            }
+            else
+            {
+                if (A[k][0] == 1)
+                {
+                    V[1] += A[k][2];
+                }
+                else
+                {
+                    if (A[k][0] == 2)
+                    {
+                        V[2] += A[k][2];
+                    }
+                }
+            }
+        }
+        
+        JOptionPane.showMessageDialog(null, "La suma de la primer fila: " + V[0] + "segunda: " + V[1] + " y tercera: " + V[2]);
+    }
+    
+    public void SumarColumna(){
+        int V[], k;
+        
+        V = new int[A[0][0]];
+        
+        for (k=1; k<=A[0][2]; k++)
+        {
+            if (A[k][1] == 0)
+            {
+                V[0] += A[k][2];
+            }
+            else
+            {
+                if (A[k][0] == 1)
+                {
+                    V[1] += A[k][2];
+                }
+                else
+                {
+                    if (A[k][0] == 2)
+                    {
+                        V[2] += A[k][2];
+                    }
+                }
+            }
+        }
     }
     
     
