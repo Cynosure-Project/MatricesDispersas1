@@ -1,13 +1,13 @@
-
 package matricesdispersas;
 
-import static matricesdispersas.MatricesDispersas.Mostrar;
+import javax.swing.JOptionPane;
 
 public class Tripleta {
+
     private int A[][];
 
     public Tripleta(int D /*Datos diferentes de cero*/) {
-        A = new int[D+1][3];
+        A = new int[D + 1][3];
     }
 
     public int[][] getA() {
@@ -17,7 +17,7 @@ public class Tripleta {
     public void setA(int[][] A) {
         this.A = A;
     }
-    
+
     public int getA(int i, int j) {
         return A[i][j];
     }
@@ -26,31 +26,56 @@ public class Tripleta {
         A[i][j] = d;
     }
     
-    public void Construir(int[][] Mat, int CD){
-        int k = 1;
-        
-        A[0][0] = Mat.length; //Número de filas
-        A[0][1] = Mat[0].length; //Numero de columnas
-        A[0][2] = CD; 
-        
-        for (int i=0; i<Mat.length; i++)
+//Métodos
+    public void Construir(int[][] M, int d) {
+        int k = 1, i, j;
+
+        A[0][0] = M.length;
+        A[0][1] = M[0].length;
+        A[0][2] = d;
+        for (i = 0; i < M.length; i++)
         {
-            for (int j=0; j<Mat[0].length; j++)
+            for (j = 0; j < M[0].length; j++)
             {
-                if (Mat[i][j] != 0)
+                if (M[i][j] != 0)
                 {
                     A[k][0] = i;
                     A[k][1] = j;
-                    A[k][2] = Mat[i][j];
-                    
+                    A[k][2] = M[i][j];
                     k++;
                 }
             }
         }
-        
-        Mostrar(A);
     }
-    
-    
-    
+
+    public void SumarColumnas() {
+        int i, k = 1, vc[] = new int[A[0][1]];
+
+        String s = "";
+        while (k <= A[0][2])
+        {
+            vc[A[k][1]] += A[k][2];
+            k++;
+        }
+        for (i = 0; i < vc.length; i++)
+        {
+            s = s + "Suma de columna " + (i + 1) + ": " + vc[i] + "\n";
+
+        }
+        JOptionPane.showMessageDialog(null, s);
+    }
+
+    public void Mostrar() {
+        String s = "";
+        for (int[] A1 : A)
+        {
+            for (int j = 0; j < A[0].length; j++)
+            {
+                s = s + "[ " + String.format("%4d", A1[j]) + " ]";
+            }
+            s = s + "\n";
+        }
+        JOptionPane.showMessageDialog(null, s, "Tripleta", 3);
+    }
+
 }
