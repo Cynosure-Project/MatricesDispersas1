@@ -1,6 +1,7 @@
 package matricesdispersas;
 
 import javax.swing.JOptionPane;
+import Utilidades.Matriz;
 
 public class Tripleta {
 
@@ -63,6 +64,113 @@ public class Tripleta {
 
         }
         JOptionPane.showMessageDialog(null, s);
+    }
+    public void SumarFilas() {
+        int vf[] = new int[A[0][0]], k = 1;
+        String s= "";
+        while (k <= A[0][2]) {
+            vf[A[k][0]] += A[k][2];
+            k++;
+        }
+        for (int i = 0; i < vf.length; i++) {
+            s = s + "Suma de columna " + (i + 1) + ": " + vf[i] + "\n";
+        }
+        JOptionPane.showMessageDialog(null, s);
+    }
+    
+    
+    public void Sumar(Tripleta T)
+    {
+       Tripleta T1=new Tripleta(A[0][0]*A[0][1]);
+       int i=1, j=1, k=1;
+       T1.A[0][0]=this.A[0][0];T1.A[0][1]=this.A[0][1];
+        while(i<=this.A[0][2]&&j<=T.A[0][2])
+        {
+            if(this.A[i][0]<T.A[j][0])
+            {
+                T1.A[k][0]=this.A[i][0];
+                T1.A[k][1]=this.A[i][1];
+                T1.A[k][2]=this.A[i][2];
+                i++;
+                k++;
+            }else
+            {
+                if (this.A[i][0] > T.A[j][0])
+                {
+                    T1.A[k][0] = T.A[j][0];
+                    T1.A[k][1] = T.A[j][1];
+                    T1.A[k][2] = T.A[j][2];
+                    j++;
+                    k++;
+                }else
+                {
+                    if(this.A[i][0] == T.A[j][0])
+                    {
+                        if (this.A[i][1] == T.A[j][1])
+                        {
+                            T1.A[k][0] = T.A[j][0];
+                            T1.A[k][1] = T.A[j][1];
+                            T1.A[k][2] = T.A[j][2]+ this.A[i][2];
+                            j++;
+                            i++;
+                            k++;
+                        }else
+                        {
+                            if(this.A[i][1] < T.A[j][1])
+                            {
+                                T1.A[k][0] = this.A[i][0];
+                                T1.A[k][1] = this.A[i][1];
+                                T1.A[k][2] = this.A[i][2];
+                                i++;
+                                k++;
+                            }else
+                            {
+                                T1.A[k][0] = T.A[j][0];
+                                T1.A[k][1] = T.A[j][1];
+                                T1.A[k][2] = T.A[j][2];
+                                j++;
+                                k++;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        while(i<=this.A[0][2])
+        {
+            T1.A[k][0] = this.A[i][0];
+            T1.A[k][1] = this.A[i][1];
+            T1.A[k][2] = this.A[i][2];
+            i++;
+            k++;
+        }
+        while(j<=T.A[0][2])
+        {
+            T1.A[k][0] = this.A[j][0];
+            T1.A[k][1] = this.A[j][1];
+            T1.A[k][2] = this.A[j][2];
+            j++;
+            k++;
+        }
+        T1.A[0][2]=k-1;
+        T1= T1.Redimencionar(k-1);
+        T1.Mostrar();
+    }
+    public Tripleta Redimencionar(int d) {
+  int i, j, k=0;
+  Tripleta T = new Tripleta(d);
+
+              for (j = 0; j <=d; j++)
+            {
+                
+                    T.A[k][0] = this.A[j][0];
+                    T.A[k][1] = this.A[j][1];
+                    T.A[k][2] = this.A[j][2];
+                    k++;
+            }
+        
+       return T;
     }
 
     public void Mostrar() {

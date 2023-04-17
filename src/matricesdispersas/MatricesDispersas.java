@@ -8,18 +8,18 @@ import Utilidades.Menu;
 public class MatricesDispersas {
 
     public static void main(String[] args) {
+        Matriz n= new Matriz();
         Matriz m = new Matriz();
         Forma1 F1= new Forma1();
         Validar Val = new Validar();
-        
+        int N[][];
         int M[][];
-        int op, d;
-        Tripleta T;
-        M = m.ConstruirRandom();
+        int op, d, d1;
+        Tripleta T, T2;
+        M = m.ConstruirRandom(0,0);
         JOptionPane.showMessageDialog(null, "Se creará una tripleta a partir de la siguiente matriz", "Crear Tripleta", 3);
         m.Mostrar(M);
         d = m.DatosDiferentesDeCero();
-                   
 
         do
         {
@@ -61,6 +61,10 @@ public class MatricesDispersas {
                             {
                                 T.Mostrar();
                             }
+                            case 2->
+                            {
+                                T.SumarFilas();
+                            }
                             case 3 ->
                             {
                                 T.SumarColumnas();
@@ -68,6 +72,54 @@ public class MatricesDispersas {
                             case 6 ->
                             {
                                 m.Mostrar(M);
+                            }
+                            case 7 ->
+                            {
+                              N=n.ConstruirRandom(T.getA(0, 0),T.getA(0, 1));
+                              d1=n.DatosDiferentesDeCero();
+                              T2=new Tripleta(d1);
+                              T2.Construir(N, d1);
+                              JOptionPane.showMessageDialog(null, """  
+                                                                                Se creará otra tripleta para realizar
+                                                                                operaciones con ésta y la anterior.
+                                                                                """, "Operaciones con tripletas",3);         
+                              T2.Mostrar();
+                                do
+                                {
+                                    op = Val.Validar_int("""   
+                                                Operaciones entre Tripletas 
+                                                                                                                                   
+                                            1. Suma.
+                                            2. Multiplicación.
+                                            3. Mostrar.
+                                            4. Salir
+                                            
+                                            """);
+                                    switch (op)
+                                    {
+                                        case 1 ->
+                                        {
+                                            T.Sumar(T2);
+                                        }
+                                        case 2 ->
+                                        {
+                                            
+                                        }
+                                        case 3 ->
+                                        {
+                                            T.Mostrar();
+                                            T2.Mostrar();
+                                        }
+                                        case 4->
+                                        {}
+                                        default->
+                                        {
+                                            JOptionPane.showMessageDialog(null, "Opción incorrecta", "Escoge otra opción", 2);
+                                        }
+                                    }
+
+                                } while (op != 4);
+                                
                             }
                             case 8 ->
                             {
