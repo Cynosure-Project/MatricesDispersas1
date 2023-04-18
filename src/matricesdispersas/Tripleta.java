@@ -170,7 +170,7 @@ public class Tripleta {
             k++;
         }
         
-       return T;
+        return T;
     }
 
     public void Mostrar() {
