@@ -1,7 +1,8 @@
 package matricesdispersas;
 
 import javax.swing.JOptionPane;
-import Utilidades.Matriz;
+
+import Utilidades.Validar;
 
 public class Tripleta {
 
@@ -154,25 +155,86 @@ public class Tripleta {
             k++;
         }
         T1.A[0][2]=k-1;
-        T1= T1.Redimencionar(k-1);
+        T1.RedimencionarP(k-1);
         T1.Mostrar();
     }
-    public Tripleta Redimencionar(int d) {
-  int i, j, k=0;
-  Tripleta T = new Tripleta(d);
-
-              for (j = 0; j <=d; j++)
-            {
-                
-                    T.A[k][0] = this.A[j][0];
-                    T.A[k][1] = this.A[j][1];
-                    T.A[k][2] = this.A[j][2];
-                    k++;
-            }
+    
+    public void Multiplicar(Tripleta T)
+    {
         
-       return T;
     }
+    public void Insertar()
+    {
+        
+    }
+    
+    public void Eliminar()
+    {
+        
+        Validar val= new Validar();
+        boolean b=true;
+        Tripleta T;
+        int c,k=0,f;
+        f= val.Validar_int("Ingresa el número de fila donde está ubicado el dato");
+        c = val.Validar_int("Ingresa el número de columna donde está ubicado el dato");
+        if(f>=this.A[0][0]||c>=this.A[0][1])
+        {
+            JOptionPane.showMessageDialog(null, "Ha ingresado un número mayor, al número de filas o columnas de la matriz", "Dato incorrecto", 0);
+        }
+        else
+        {
+            while(k<=this.A[0][2]&&b)
+            {
+                if(this.A[k][0]==f&& this.A[k][1]==c)
+                {
+                    b=false;
+                    this.A[k][2]=0;
+                    this.A[0][2]-=1;
+                    this.RedimencionarP(this.A[0][2]);
+                }
+                k++;
+            }
+            if(b)
+            {
+                JOptionPane.showMessageDialog(null, "No existe dato en esta posición", "Dato no encontrado", 2);
+            }else
+            {
+                JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente", "Dato encontrado", 3);
+            }
+            
+        }
+        this.Mostrar();
+        
+    }
+    
+    public void RedimencionarP(int t) //Elimina filas de la tripleta con dato 0
+    {
+        int j = 0, k = 0;
+        Tripleta T = new Tripleta(t);
+        while (k <= t)
+        {
+            if (this.A[j][2] != 0)
+            {
+                T.A[k][0] = this.A[j][0];
+                T.A[k][1] = this.A[j][1];
+                T.A[k][2] = this.A[j][2];
+                k++;
+                j++;
+            } else
+            {
+                if(k==0)
+                { 
+                    k++;
+                     JOptionPane.showMessageDialog(null, "La tripleta ha quedado vacía", "Vacío", 2);
+                }
+                j++;
+            }
 
+        }
+        this.setA(T.A);
+
+    }
+  
     public void Mostrar() {
         String s = "";
         for (int[] A1 : A)

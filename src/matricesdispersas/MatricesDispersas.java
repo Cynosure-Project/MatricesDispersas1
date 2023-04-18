@@ -76,6 +76,10 @@ public class MatricesDispersas {
                             {
                                 T.SumarColumnas();
                             }
+                            case 5->
+                            {
+                                T.Eliminar();
+                            }
                             case 6 ->
                             {
                                 m.Mostrar(M);
@@ -119,7 +123,7 @@ public class MatricesDispersas {
                                             JOptionPane.showMessageDialog(null, """  
                                                                                 Resultado de la tripleta multiplicación
                                                                                 """, "Resultado operaciones con tripletas", 3);
-                                            //T.Sumar(T3);
+                                            T.Multiplicar(T3);
                                         }
                                         case 3 ->
                                         {
