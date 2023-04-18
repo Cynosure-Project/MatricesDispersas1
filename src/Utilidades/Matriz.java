@@ -85,4 +85,18 @@ public class Matriz {
         
         return d;
     }
+    
+    public void Mostrar(int[][] M){
+        int i, j;
+        
+        for (i=0; i<M.length; i++)
+        {
+            for (j=0; j<M[0].length; j++)
+            {
+                System.out.print("|" + M[i][j] + "|");
+            }
+            
+            System.out.println("");
+        }
+    }
 }
