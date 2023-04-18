@@ -157,18 +157,18 @@ public class Tripleta {
         T1= T1.Redimencionar(k-1);
         T1.Mostrar();
     }
+    
     public Tripleta Redimencionar(int d) {
-  int i, j, k=0;
-  Tripleta T = new Tripleta(d);
+        int i, j, k=0;
+        Tripleta T = new Tripleta(d);
 
-              for (j = 0; j <=d; j++)
-            {
-                
-                    T.A[k][0] = this.A[j][0];
-                    T.A[k][1] = this.A[j][1];
-                    T.A[k][2] = this.A[j][2];
-                    k++;
-            }
+        for (j=0; j<=d; j++)
+        {
+            T.A[k][0] = this.A[j][0];
+            T.A[k][1] = this.A[j][1];
+            T.A[k][2] = this.A[j][2];
+            k++;
+        }
         
        return T;
     }
