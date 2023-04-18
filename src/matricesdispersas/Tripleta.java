@@ -147,9 +147,9 @@ public class Tripleta {
         }
         while(j<=T.A[0][2])
         {
-            T1.A[k][0] = this.A[j][0];
-            T1.A[k][1] = this.A[j][1];
-            T1.A[k][2] = this.A[j][2];
+            T1.A[k][0] = T.A[j][0];
+            T1.A[k][1] = T.A[j][1];
+            T1.A[k][2] = T.A[j][2];
             j++;
             k++;
         }
