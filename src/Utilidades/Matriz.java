@@ -43,24 +43,36 @@ public class Matriz {
         M[i][j] = d;
     }
     
-    public int[][] ConstruirRandom(){
+    public int[][] ConstruirRandom(int f,int c){
         int i, j;
-        boolean b;
         
-        b = true;
-        
-        for (int k=0; k<=n*m; k++)
+        if (f!=0 && c!=0)
         {
-            if (b)
+            n = f;
+            m = c;
+            M = new int[n][m];
+        } 
+        else
+        {
+            if (f!=0 && c==0)
             {
-                i = (int)(Math.random()*((n-1)-0+1)+0);
-                j = (int)(Math.random()*((m-1)-0+1)+0);
-                M[i][j] = (int)(Math.random()*(100-(-100)+1)-100);     
-                b = false;
+                n = f;
+                M = new int[n][m];
             }
+        }
+        
+        for (int k=0; k<n*m; k++)
+        {
+            i = (int) (Math.random() * ((n - 1) - 0 + 1) + 0);
+            j = (int) (Math.random() * ((m - 1) - 0 + 1) + 0);
+            
+            if (k%2 == 0)
+            {
+                M[i][j] = (int) (Math.random() * (100 - (-100) + 1) - 100);
+            } 
             else
             {
-                b = true;
+                M[i][j] = 0;
             }
         }
         
@@ -99,4 +111,5 @@ public class Matriz {
             System.out.println("");
         }
     }
+    
 }

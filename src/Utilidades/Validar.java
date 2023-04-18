@@ -25,7 +25,7 @@ public class Validar {
         return s;
     }
     
-    public int Validarint(String t){
+    public int ValidarInt(String t){
         int i;
         boolean B;
         
@@ -48,7 +48,7 @@ public class Validar {
         return i;
     }
     
-    public String Validarchar(String t){
+    public String ValidarChar(String t){
         String c;
         
         c = "";

@@ -25,13 +25,13 @@ public class MatricesDispersas {
         T2 = new Tripleta(d1);
         T2.Construir(N, d1);
         M2 = m.ConstruirRandom(T.getA(0, 1), 0);
-        d2=m.DatosDiferentesDeCero();
-        T3=new Tripleta(d2);
+        d2 = m.DatosDiferentesDeCero();
+        T3 = new Tripleta(d2);
         T3.Construir(M2, d2);
 
         do
         {
-            op = Val.Validar_int("""   
+            op = Val.ValidarInt("""   
                                                 Menú Matrices dispersas 
                                                                                                                                    
                                             1. Tripletas.
@@ -41,6 +41,7 @@ public class MatricesDispersas {
                                             5. Ver matriz inicial
                                             0. Salir.
                                             """);
+            
             switch (op)
             {
                 case 1 ->
@@ -49,7 +50,7 @@ public class MatricesDispersas {
                     do
                     {
 
-                        op = Val.Validar_int("""   
+                        op = Val.ValidarInt("""   
                                                 Menú Tripletas 
                                                                                                                                                   
                                             1. Mostrar Tripleta
@@ -59,8 +60,9 @@ public class MatricesDispersas {
                                             5. Eliminar un dato.
                                             6. Ver matriz inicial
                                             7. Operaciones entre tripletas
-                                            8. Volver al menú principal.
+                                            0. Volver al menú principal.
                                             """);
+                        
                         switch (op)
                         {
 
@@ -85,7 +87,7 @@ public class MatricesDispersas {
                                 
                                 do
                                 {
-                                    op = Val.Validar_int("""   
+                                    op = Val.ValidarInt("""   
                                                 Operaciones entre Tripletas 
                                                                                                                                    
                                             1. Suma.
@@ -140,7 +142,7 @@ public class MatricesDispersas {
                                 } while (op != 4);
                                 
                             }
-                            case 8 ->
+                            case 0 ->
                             {
 
                             }
@@ -158,7 +160,7 @@ public class MatricesDispersas {
                     do
                     {
 
-                        op = Val.Validar_int("""   
+                        op = Val.ValidarInt("""   
                                                 Menú Tripletas Forma 1 
                                                                                                                                                   
                                             1. Mostrar Forma 1
@@ -168,7 +170,7 @@ public class MatricesDispersas {
                                             5. Eliminar un dato.
                                             6. Ver matriz inicial
                                             7. Operaciones Forma 1
-                                            8. Volver al menú principal.
+                                            0. Volver al menú principal.
                                             """);
                         switch (op)
                         {
@@ -185,7 +187,7 @@ public class MatricesDispersas {
                             {
                                 m.Mostrar(M);
                             }
-                            case 8 ->
+                            case 0 ->
                             {
 
                             }
@@ -212,9 +214,6 @@ public class MatricesDispersas {
                 }
             }
         } while (op != 0);
-        
-        M.ConstruirRandom();
-        Mostrar(M.getM());
         
     }
     
