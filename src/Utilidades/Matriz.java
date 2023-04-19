@@ -46,7 +46,7 @@ public class Matriz {
         M[i][j] = d;
     }
 //Métodos
-    public int[][] ConstruirRandom(int f,int c) {
+    public int[][] ConstruirRandom(int f, int c) {
         int i, j;
         if (f != 0 && c != 0)
         {
@@ -61,8 +61,6 @@ public class Matriz {
                 M = new int[n][m];
             }
         }
-        
-        
         for (int k = 0; k < n * m; k++)
         {
             i = (int) (Math.random() * ((n - 1) - 0 + 1) + 0);

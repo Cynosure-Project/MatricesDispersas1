@@ -17,54 +17,51 @@ import Utilidades.Nodo;
     {
         Punta= null;
     }
-    //hola
-    public void Crear (int M[][])
+   
+    public void Crear (int M[][], int f,int c)
     {
-        Paso1(M.length,M[0].length);
+        int Mayor;
+        if (f < c)
+            Mayor = c;
+        else
+            Mayor = f;
+        Paso1(Mayor,f,c);
         Paso2(M);
         Paso3();
     }
-    public void Paso1(int n, int m) {
-        int i = 0, Mayor;
-        Nodo x, P;
-        if (n < m)
-            Mayor = m;
-        else
-            Mayor = n;
-        
-        x = new Nodo(0, n, m);
-        Punta = x;
-        P=Punta;
-        while (i < Mayor)
-        {
+    public void Paso1(int Mayor ,int n, int m) {
+       Nodo x, P;
+        Punta = new Nodo(0, n, m);
+        P = Punta;
+
+        for (int i = 0; i < Mayor; i++) {
             x = new Nodo(0, i, i);
             x.setLf(x);
             x.setLc(x);
             P.setLiga(x);
             P = x;
-            i++;
+
         }
-        P.setLiga(Punta);
-        
+        P.setLiga(Punta);        
     }
     private void Paso2(int M[][])
     {
-        int i=0,j=0;
-        Nodo x,P=Punta.getLiga(),Q=P;
-        for(i=0;i<P.getFila();i++)
-        {
-            for(j=0;j<P.getColumna();j++)
-            {
-                if(M[i][j]!=0)
-                {
-                    x=new Nodo(M[i][j],i,j);
+       Nodo x, P, Q;
+        P = Punta.getLiga();
+        Q = P;
+
+        for (int i = 0; i < M.length; i++) {
+            for (int j = 0; j < M[i].length; j++) {
+                if (M[i][j] != 0) {
+
+                    x = new Nodo(M[i][j], i, j);
                     Q.setLf(x);
-                    Q=x;   
+                    Q = x;
                 }
             }
             Q.setLf(P);
-            P=P.getLiga();
-            Q=P;
+            P = P.getLiga();
+            Q = P;
         }
         
     }
@@ -76,9 +73,10 @@ import Utilidades.Nodo;
             {
                 while (Q != P)
                 {
-                    if (Q.getColumna() == RC.getColumna())
+                    if (RC.getColumna() == Q.getColumna())
                     {
                         A.setLc(Q);
+                        A = Q;
                     }
                     Q = Q.getLf();
                 }
@@ -87,24 +85,43 @@ import Utilidades.Nodo;
             }
             A.setLc(RC);
             RC = RC.getLiga();
+            A = RC;
             P = Punta.getLiga();
             Q = P.getLf();
-            A = RC;
         }
-        
-
     }
-    public void Mostrar() {
+
+ 
+   
+    public void MostrarF1() {
         Nodo P, Q;
-        String s="";
-        P = Punta;
+        String s="["+Punta.getFila()+"][" + Punta.getColumna() +"]\n";
+        boolean r=true;
+        P = Punta.getLiga();
         Q = P.getLf();
-        do
-        {
-            
-        } while(P!=Punta) ;             
+        while(P!=Punta) {
         
+            if(Q!=P)
+            {
+                if(r)
+                {
+                    s=s+ "["+P.getFila()+"][" + P.getColumna() +"]->"+"[" + Q.getFila() + "][" + Q.getColumna()+ "][ " + Q.getDato() +" ]-->";
+                    r=false;
+                }else
+                {
+                    s=s+"[" + Q.getFila() + "][" + Q.getColumna()+ "][ " + Q.getDato() +" ]-->";
+                }
+                
+                Q=Q.getLf();
+            }else{
+             s=s+"\n";
+             r=true;
+             P=P.getLiga();
+             Q=P.getLf();
+        }       
+        }
         JOptionPane.showMessageDialog(null, s, "Mostrar Tripleta Forma 1", 3);
     }
+    
 }
 

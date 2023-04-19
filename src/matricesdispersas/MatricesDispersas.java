@@ -10,10 +10,10 @@ public class MatricesDispersas {
     public static void main(String[] args) {
         Matriz n= new Matriz(),m = new Matriz(),m2=new Matriz();
         Forma1 F1= new Forma1();
+        Forma2 F2;
         Validar Val = new Validar();
         int M[][],N[][], M2[][], op,d,d1,d2;
         Tripleta T, T2, T3;
-        
         M = m.ConstruirRandom(0,0);
         JOptionPane.showMessageDialog(null, "Se creará una tripleta a partir de la siguiente matriz", "Crear Tripleta", 3);
         m.Mostrar(M);
@@ -37,8 +37,7 @@ public class MatricesDispersas {
                                             1. Tripletas.
                                             2. Forma 1.
                                             3. Forma 2.
-                                            4. Operaciones entre Formas.
-                                            5. Ver matriz inicial
+                                            4. Operaciones entre Formas
                                             0. Salir.
                                             """);
             switch (op)
@@ -158,7 +157,7 @@ public class MatricesDispersas {
                 }
                 case 2 ->
                 {
-                    F1.Crear(M);
+                    F1.Crear(M,M.length, M[0].length);
                     do
                     {
 
@@ -179,7 +178,7 @@ public class MatricesDispersas {
 
                             case 1 ->
                             {
-                                F1.Mostrar();
+                                F1.MostrarF1();
                             }
                             case 3 ->
                             {
@@ -201,18 +200,20 @@ public class MatricesDispersas {
                         }
                     } while (op != 8);
                 }
-                case 5 ->
+                case 3 ->
                 {
-                    m.Mostrar(M);
+                    F2=new Forma2(M.length, M[0].length);
+                    F2.Crear(M);
+                    F2.MostrarF2();
                 }
 
                 case 0 ->
                 {
-
+                    JOptionPane.showMessageDialog(null, "Adiós", "Salir", 3);
                 }
                 default ->
                 {
-
+                    JOptionPane.showMessageDialog(null, "Opción incorrecta", "Escoge otra opción", 2);
                 }
             }
         } while (op != 0);
