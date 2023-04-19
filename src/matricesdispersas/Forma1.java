@@ -88,7 +88,30 @@ import Utilidades.Nodo;
         }
     }
 
- 
+ public void SumarFilas() {
+        int i=0, vc[] = new int[Punta.getFila()];
+        Nodo P=Punta.getLiga(),Q=P.getLf();
+        
+        String s = "";
+        while (P!=Punta)
+        {
+            while(Q!=P)
+            {
+                vc[i] += Q.getDato();
+                Q = Q.getLf();
+            }
+            
+            i++;
+            P = P.getLiga();
+            Q = P.getLf();
+        }
+        for (i = 0; i < vc.length; i++)
+        {
+            s = s + "Suma de fila " + (i + 1) + ": " + vc[i] + "\n";
+
+        }
+        JOptionPane.showMessageDialog(null, s);
+    }
    
     public void MostrarF1() {
         Nodo P, Q;

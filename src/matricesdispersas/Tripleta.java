@@ -74,7 +74,7 @@ public class Tripleta {
             k++;
         }
         for (int i = 0; i < vf.length; i++) {
-            s = s + "Suma de columna " + (i + 1) + ": " + vf[i] + "\n";
+            s = s + "Suma de fila " + (i + 1) + ": " + vf[i] + "\n";
         }
         JOptionPane.showMessageDialog(null, s);
     }

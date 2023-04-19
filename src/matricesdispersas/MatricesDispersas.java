@@ -150,7 +150,7 @@ public class MatricesDispersas {
 
                             default ->
                             {
-
+                                JOptionPane.showMessageDialog(null, "Opción incorrecta", "Escoge otra opción", 2);
                             }
                         }
                     } while (op != 8);
@@ -180,13 +180,29 @@ public class MatricesDispersas {
                             {
                                 F1.MostrarF1();
                             }
+                            case 2->
+                            {
+                                F1.SumarFilas();
+                            }
                             case 3 ->
                             {
                                 //.SumarColumnas();
                             }
+                            case 4->
+                            {
+                                
+                            }
+                            case 5->
+                            {
+                                
+                            }
                             case 6 ->
                             {
                                 m.Mostrar(M);
+                            }
+                            case 7->
+                            {
+                                
                             }
                             case 8 ->
                             {
@@ -195,7 +211,7 @@ public class MatricesDispersas {
 
                             default ->
                             {
-
+                                JOptionPane.showMessageDialog(null, "Opción incorrecta", "Escoge otra opción", 2);
                             }
                         }
                     } while (op != 8);
