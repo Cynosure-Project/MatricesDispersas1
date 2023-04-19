@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package matricesdispersas;
 
 import javax.swing.JOptionPane;
@@ -97,28 +94,37 @@ import Utilidades.Nodo;
         Nodo P, Q;
         String s="["+Punta.getFila()+"][" + Punta.getColumna() +"]\n";
         boolean r=true;
+        int i=0;
         P = Punta.getLiga();
         Q = P.getLf();
         while(P!=Punta) {
         
-            if(Q!=P)
+            while (Q != P)
             {
-                if(r)
+                if (r)
                 {
-                    s=s+ "["+P.getFila()+"][" + P.getColumna() +"]->"+"[" + Q.getFila() + "][" + Q.getColumna()+ "][ " + Q.getDato() +" ]-->";
-                    r=false;
-                }else
+                    s = s + "[" + P.getFila() + "][" + P.getColumna() + "]->" + "[" + Q.getFila() + "][" + Q.getColumna() + "][ " + Q.getDato() + " ]-->";
+                    r = false;
+                } else
                 {
-                    s=s+"[" + Q.getFila() + "][" + Q.getColumna()+ "][ " + Q.getDato() +" ]-->";
+                    s = s + "[" + Q.getFila() + "][" + Q.getColumna() + "][ " + Q.getDato() + " ]-->";
                 }
-                
-                Q=Q.getLf();
-            }else{
-             s=s+"\n";
-             r=true;
-             P=P.getLiga();
-             Q=P.getLf();
-        }       
+                i++;
+                Q = Q.getLf();
+            }
+            if (i == 0)
+            {
+                s = s + "[" + P.getFila() + "][" + P.getColumna() + "]<-\n";
+
+            } else
+            {
+                s = s + "\n";
+            }
+            i = 0;
+            r = true;
+            P = P.getLiga();
+            Q = P.getLf();
+
         }
         JOptionPane.showMessageDialog(null, s, "Mostrar Tripleta Forma 1", 3);
     }
