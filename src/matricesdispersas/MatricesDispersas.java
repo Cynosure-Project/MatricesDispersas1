@@ -72,11 +72,11 @@ public class MatricesDispersas {
                             }
                             case 2->
                             {
-                                T.SumarFilas();
+                                //T.SumarFilas();
                             }
                             case 3 ->
                             {
-                                T.SumarColumnas();
+                                //T.SumarColumnas();
                             }
                             case 6 ->
                             {

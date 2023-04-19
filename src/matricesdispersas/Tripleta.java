@@ -47,8 +47,6 @@ public class Tripleta {
                 }
             }
         }
-        
-        Mostrar(A);
     }
     
     public void SumarFila(){
@@ -109,18 +107,62 @@ public class Tripleta {
         }
     }
     
-    public void Mostrar(int[][] M){
-        int i, j;
-        
-        for (i=0; i<M.length; i++)
+    public void Mostrar() {
+        String s = "";
+        for (int[] A1 : A)
         {
-            for (j=0; j<M[0].length; j++)
+            for (int j = 0; j < A[0].length; j++)
             {
-                System.out.print("|" + M[i][j] + "|");
+                s = s + "[ " + String.format("%4d", A1[j]) + " ]";
             }
-            
-            System.out.println("");
+            s = s + "\n";
         }
+        JOptionPane.showMessageDialog(null, s, "Tripleta", 3);
+    }
+    
+    public void Insertar(int[][] T, int d){
+        boolean b;
+        int f, c, k;
+        
+        b = true;
+        f = Integer.parseInt(JOptionPane.showInputDialog("Ingrese fila a colocar dato: "));
+        c = Integer.parseInt(JOptionPane.showInputDialog("Ingrese columna a colocar dato: "));
+        
+        T[f][c] = d;
+        
+        for(k=1; k<=T[0][2] && b; k++)
+        {
+            if(T[k][0] == f)
+            {
+                if(T[k][1] == c)
+                {
+                    T[k][2] = d;
+                    b = false;
+                }
+                else
+                {
+                    if(T[k][1]<c && T[k+1][1]>c)
+                    {
+                        T = RedimensionarG(T[0][2]+1);
+                    }
+                }
+            }
+        }
+    }
+    
+    public int[][] RedimensionarG(int d){
+        int i, k=0;
+        Tripleta T = new Tripleta(d);
+
+        for (i=0; i<=d; i++)
+        {
+            T.A[k][0] = this.A[i][0];
+            T.A[k][1] = this.A[i][1];
+            T.A[k][2] = this.A[i][2];
+            k++;
+        }
+        
+        return A;
     }
     
 }
