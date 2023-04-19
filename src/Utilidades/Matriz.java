@@ -1,6 +1,8 @@
 
 package Utilidades;
 
+import javax.swing.JOptionPane;
+
 public class Matriz {
     private int n, m, M[][];
     public Matriz(){
@@ -98,18 +100,18 @@ public class Matriz {
         return d;
     }
     
-    public void Mostrar(int[][] M){
+    public void Mostrar(int[][] M) {
         int i, j;
-        
-        for (i=0; i<M.length; i++)
+        String s = "";
+        for (i = 0; i < M.length; i++)
         {
-            for (j=0; j<M[0].length; j++)
+            for (j = 0; j < M[0].length; j++)
             {
-                System.out.print("|" + M[i][j] + "|");
+                s = s + "[ " + String.format("%4d", M[i][j]) + " ]";
             }
-            
-            System.out.println("");
+            s = s + "\n";
         }
+        JOptionPane.showMessageDialog(null, s, "Matriz de datos aleatorios", 3);
     }
     
 }

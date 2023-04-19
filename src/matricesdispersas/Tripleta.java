@@ -49,7 +49,7 @@ public class Tripleta {
         }
     }
     
-    public void SumarFila(){
+    /*public void SumarFila(){
         int V[], k;
         
         V = new int[A[0][0]];
@@ -77,9 +77,9 @@ public class Tripleta {
         }
         
         JOptionPane.showMessageDialog(null, "La suma de la primer fila: " + V[0] + "segunda: " + V[1] + " y tercera: " + V[2]);
-    }
+    }*/
     
-    public void SumarColumna(){
+    /*public void SumarColumna(){
         int V[], k;
         
         V = new int[A[0][0]];
@@ -105,7 +105,7 @@ public class Tripleta {
                 }
             }
         }
-    }
+    }*/
     
     public void Mostrar() {
         String s = "";
@@ -120,49 +120,135 @@ public class Tripleta {
         JOptionPane.showMessageDialog(null, s, "Tripleta", 3);
     }
     
-    public void Insertar(int[][] T, int d){
-        boolean b;
-        int f, c, k;
-        
-        b = true;
-        f = Integer.parseInt(JOptionPane.showInputDialog("Ingrese fila a colocar dato: "));
-        c = Integer.parseInt(JOptionPane.showInputDialog("Ingrese columna a colocar dato: "));
-        
-        T[f][c] = d;
-        
-        for(k=1; k<=T[0][2] && b; k++)
-        {
-            if(T[k][0] == f)
-            {
-                if(T[k][1] == c)
-                {
-                    T[k][2] = d;
-                    b = false;
-                }
-                else
-                {
-                    if(T[k][1]<c && T[k+1][1]>c)
-                    {
-                        T = RedimensionarG(T[0][2]+1);
-                    }
-                }
-            }
-        }
-    }
-    
-    public int[][] RedimensionarG(int d){
+    public void RedimensionarG(){
         int i, k=0;
-        Tripleta T = new Tripleta(d);
+        Tripleta T = new Tripleta(A[0][2]+1);
 
-        for (i=0; i<=d; i++)
+        for (i=0; i<=A[0][2]; i++)
         {
             T.A[k][0] = this.A[i][0];
             T.A[k][1] = this.A[i][1];
             T.A[k][2] = this.A[i][2];
             k++;
         }
+    }
+    
+    public void Insertar(int d){
+        boolean b;
+        int f, c, k, i;
         
-        return A;
+        b = true;
+        f = Integer.parseInt(JOptionPane.showInputDialog("Ingrese fila a colocar dato: "));
+        c = Integer.parseInt(JOptionPane.showInputDialog("Ingrese columna a colocar dato: "));
+        A[f][c] = d;
+        
+        for (k=1; k<=A[0][2] && b; k++)
+        {
+            if(A[k][0] == f)
+            {
+                if(A[k][1] == c)
+                {
+                    A[k][2] = d;
+                    b = false;
+                }
+                else
+                {
+                    if(A[k][1]<c && A[k+1][1]>c)
+                    {
+                        RedimensionarG();
+                        
+                        for(i=A[0][2]; i>k; i--)
+                        {
+                            A[i+1][0] = A[i][0];
+                            A[i+1][1] = A[i][1];
+                            A[i+1][2] = A[i][2];
+                        }
+                        
+                        A[k+1][0] = f;
+                        A[k+1][1] = c;
+                        A[k+1][2] = d;
+                        b = false;
+                        A[0][1] += 1;
+                        A[0][2] += 1;
+                    }
+                    else
+                    {
+                        if (k+1 > A[0][2])
+                        {
+                            RedimensionarG();
+                            
+                            A[k+1][0] = f;
+                            A[k+1][1] = c;
+                            A[k+1][2] = d;
+                            b = false;
+                            A[0][1] += 1;
+                            A[0][2] += 1;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if(A[k][0]<f && A[k+1][0]>f)
+                {
+                    RedimensionarG();
+                    
+                    for(i=A[0][2]; i>k; i--)
+                    {
+                        A[i+1][0] = A[i][0];
+                        A[i+1][1] = A[i][1];
+                        A[i+1][2] = A[i][2];
+                    }
+                    
+                    A[k+1][0] = f;
+                    A[k+1][1] = c;
+                    A[k+1][2] = d;
+                    b = false;
+                    A[0][0] += 1;
+                    A[0][1] += 1;
+                    A[0][2] += 1;
+                }
+                else
+                {
+                    if(k+1 > A[0][2])
+                    {
+                        RedimensionarG();
+                        
+                        A[k+1][0] = f; //
+                        A[k+1][1] = c;
+                        A[k+1][2] = d;
+                        b = false;
+                        A[0][0] += 1;
+                        A[0][1] += 1;
+                        A[0][2] += 1;
+                    }
+                    else
+                    {
+                        if(A[k][0] > f)
+                        {
+                            RedimensionarG();
+                            
+                            for(i=A[0][2]; i>k; i--)
+                            {
+                                A[i+1][0] = A[i][0];
+                                A[i+1][1] = A[i][1];
+                                A[i+1][2] = A[i][2];
+                            }
+                            
+                            A[k][0] = f;
+                            A[k][1] = c;
+                            A[k][2] = d;
+                            b = false;
+                            A[0][0] += 1;
+                            A[0][1] += 1;
+                            A[0][2] += 1;
+                        }
+                    }
+                }
+            }
+        }
+        
+        Mostrar();
     }
     
 }
