@@ -131,19 +131,22 @@ public class Tripleta {
             T.A[k][2] = this.A[i][2];
             k++;
         }
+        
+        T.A[0][2] += 1;
+        A = T.A;
     }
     
-    public void Insertar(int d){
-        boolean b;
-        int f, c, k, i;
+    public void Insertar(int d, int f, int c, int[][] M){
+        boolean b, b1;
+        int k, i;
         
         b = true;
-        f = Integer.parseInt(JOptionPane.showInputDialog("Ingrese fila a colocar dato: "));
-        c = Integer.parseInt(JOptionPane.showInputDialog("Ingrese columna a colocar dato: "));
-        A[f][c] = d;
+        M[f][c] = d;
         
-        for (k=1; k<=A[0][2] && b; k++)
+        for(k=1; k<=A[0][2] && b; k++)
         {
+            b1 = true;
+            
             if(A[k][0] == f)
             {
                 if(A[k][1] == c)
@@ -153,97 +156,181 @@ public class Tripleta {
                 }
                 else
                 {
-                    if(A[k][1]<c && A[k+1][1]>c)
+                    if(k+1 > A[0][2])
                     {
                         RedimensionarG();
-                        
-                        for(i=A[0][2]; i>k; i--)
-                        {
-                            A[i+1][0] = A[i][0];
-                            A[i+1][1] = A[i][1];
-                            A[i+1][2] = A[i][2];
-                        }
-                        
+
                         A[k+1][0] = f;
                         A[k+1][1] = c;
                         A[k+1][2] = d;
                         b = false;
-                        A[0][1] += 1;
-                        A[0][2] += 1;
+
+                        for(i=1; i<=A[0][2]; i++)
+                        {
+                            if(A[i][1] == c)
+                            {
+                                b1 = false;
+                            }
+                        }
+
+                        if(b1)
+                        {
+                            A[0][1] += 1;
+                        }
                     }
                     else
                     {
-                        if (k+1 > A[0][2])
+                        if(k==1 && A[k][1]>c)
                         {
                             RedimensionarG();
-                            
-                            A[k+1][0] = f;
-                            A[k+1][1] = c;
-                            A[k+1][2] = d;
+
+                            for(i=A[0][2]; i>0; i--)
+                            {
+                                A[i][0] = A[i-1][0];
+                                A[i][1] = A[i-1][1];
+                                A[i][2] = A[i-1][2];
+                            }
+
+                            A[k][0] = f;
+                            A[k][1] = c;
+                            A[k][2] = d;
                             b = false;
-                            A[0][1] += 1;
-                            A[0][2] += 1;
+
+                            for(i=1; i<=A[0][2]; i++)
+                            {
+                                if(A[i][1] == c)
+                                {
+                                    b1 = false;
+                                }
+                            }
+
+                            if(b1)
+                            {
+                                A[0][1] += 1;
+                            }
+                        }
+                        else
+                        {
+                            if(A[k][1]<c && A[k+1][1]>c)
+                            {
+                                RedimensionarG();
+
+                                for(i=A[0][2]; i>k; i--)
+                                {
+                                    A[i][0] = A[i-1][0];
+                                    A[i][1] = A[i-1][1];
+                                    A[i][2] = A[i-1][2];
+                                }
+
+                                A[k+1][0] = f;
+                                A[k+1][1] = c;
+                                A[k+1][2] = d;
+                                b = false;
+
+                                for(i=1; i<=A[0][2]; i++)
+                                {
+                                    if(A[i][1] == c)
+                                    {
+                                        b1 = false;
+                                    }
+                                }
+
+                                if(b1)
+                                {
+                                    A[0][1] += 1;
+                                }
+                            }
                         }
                     }
                 }
             }
             else
             {
-                if(A[k][0]<f && A[k+1][0]>f)
+                if(k+1 > A[0][2])
                 {
                     RedimensionarG();
-                    
-                    for(i=A[0][2]; i>k; i--)
-                    {
-                        A[i+1][0] = A[i][0];
-                        A[i+1][1] = A[i][1];
-                        A[i+1][2] = A[i][2];
-                    }
-                    
-                    A[k+1][0] = f;
+
+                    A[k+1][0] = f; //
                     A[k+1][1] = c;
                     A[k+1][2] = d;
                     b = false;
-                    A[0][0] += 1;
-                    A[0][1] += 1;
-                    A[0][2] += 1;
+
+                    for(i=1; i<=A[0][2]; i++)
+                    {
+                        if(A[i][0] == f)
+                        {
+                            b1 = false;
+                        }
+                    }
+
+                    if(b1)
+                    {
+                        A[0][0] += 1;
+                    }
                 }
                 else
                 {
-                    if(k+1 > A[0][2])
+                    if(k==1 && A[k][0]>f)
                     {
                         RedimensionarG();
-                        
-                        A[k+1][0] = f; //
-                        A[k+1][1] = c;
-                        A[k+1][2] = d;
+
+                        for(i=A[0][2]; i>0; i--)
+                        {
+                            A[i][0] = A[i-1][0];
+                            A[i][1] = A[i-1][1];
+                            A[i][2] = A[i-1][2];
+                        }
+
+                        A[k][0] = f;
+                        A[k][1] = c;
+                        A[k][2] = d;
                         b = false;
-                        A[0][0] += 1;
-                        A[0][1] += 1;
-                        A[0][2] += 1;
-                    }
+
+                        for(i=1; i<=A[0][2]; i++)
+                        {
+                            if(A[i][0] == f)
+                            {
+                                b1 = false;
+                            }
+                        }
+
+                        if(b1)
+                        {
+                            A[0][0] += 1;
+                        }
+                    }  
                     else
                     {
-                        if(A[k][0] > f)
+                        if(A[k][0]<f && A[k+1][0]>f)
                         {
                             RedimensionarG();
-                            
+
                             for(i=A[0][2]; i>k; i--)
                             {
-                                A[i+1][0] = A[i][0];
-                                A[i+1][1] = A[i][1];
-                                A[i+1][2] = A[i][2];
+                                A[i][0] = A[i-1][0];
+                                A[i][1] = A[i-1][1];
+                                A[i][2] = A[i-1][2];
                             }
-                            
-                            A[k][0] = f;
-                            A[k][1] = c;
-                            A[k][2] = d;
+
+                            A[k+1][0] = f;
+                            A[k+1][1] = c;
+                            A[k+1][2] = d;
                             b = false;
-                            A[0][0] += 1;
-                            A[0][1] += 1;
-                            A[0][2] += 1;
-                        }
-                    }
+
+                            for(i=1; i<=A[0][2]; i++)
+                            {
+                                if(A[i][0] == f)
+                                {
+                                    b1 = false;
+                                }
+                            }
+
+                            if(b1)
+                            {
+                                A[0][0] += 1;
+                            }
+                        }   
+                    } 
                 }
             }
         }

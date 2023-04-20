@@ -81,8 +81,11 @@ public class MatricesDispersas {
                             case 4 ->
                             {
                                 d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese dato a insertar: "));
-                                
-                                T.Insertar(d);
+                                int f = Integer.parseInt(JOptionPane.showInputDialog("Ingrese fila a colocar dato: "));
+                                int c = Integer.parseInt(JOptionPane.showInputDialog("Ingrese columna a colocar dato: "));
+        
+                                T.Insertar(d, f, c, M);
+                                m.Mostrar(M);
                             }
                             case 5 ->
                             {
@@ -103,7 +106,7 @@ public class MatricesDispersas {
                                             1. Suma.
                                             2. Multiplicación.
                                             3. Mostrar.
-                                            4. Salir
+                                            0. Salir
                                             
                                             """);
                                     switch (op)
@@ -149,7 +152,7 @@ public class MatricesDispersas {
                                         }
                                     }
 
-                                } while (op != 4);
+                                } while (op != 0);
                                 
                             }
                             case 0 ->
@@ -162,7 +165,7 @@ public class MatricesDispersas {
 
                             }
                         }
-                    } while (op != 8);
+                    } while (op != 0);
                 }
                 case 2 ->
                 {
