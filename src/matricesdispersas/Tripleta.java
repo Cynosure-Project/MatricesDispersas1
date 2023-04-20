@@ -78,23 +78,22 @@ public class Tripleta {
         }
         JOptionPane.showMessageDialog(null, s);
     }
-    
-    
-    public void Sumar(Tripleta T)
-    {
-       Tripleta T1=new Tripleta(A[0][0]*A[0][1]);
-       int i=1, j=1, k=1;
-       T1.A[0][0]=this.A[0][0];T1.A[0][1]=this.A[0][1];
-        while(i<=this.A[0][2]&&j<=T.A[0][2])
+
+    public void Sumar(Tripleta T) {
+        Tripleta T1 = new Tripleta(A[0][0] * A[0][1]);
+        int i = 1, j = 1, k = 1;
+        T1.A[0][0] = this.A[0][0];
+        T1.A[0][1] = this.A[0][1];
+        while (i <= this.A[0][2] && j <= T.A[0][2])
         {
-            if(this.A[i][0]<T.A[j][0])
+            if (this.A[i][0] < T.A[j][0])
             {
-                T1.A[k][0]=this.A[i][0];
-                T1.A[k][1]=this.A[i][1];
-                T1.A[k][2]=this.A[i][2];
+                T1.A[k][0] = this.A[i][0];
+                T1.A[k][1] = this.A[i][1];
+                T1.A[k][2] = this.A[i][2];
                 i++;
                 k++;
-            }else
+            } else
             {
                 if (this.A[i][0] > T.A[j][0])
                 {
@@ -103,42 +102,42 @@ public class Tripleta {
                     T1.A[k][2] = T.A[j][2];
                     j++;
                     k++;
-                }else
+                } else
                 {
-                    if(this.A[i][0] == T.A[j][0])
+                    if (this.A[i][0] == T.A[j][0])
                     {
                         if (this.A[i][1] == T.A[j][1])
                         {
                             T1.A[k][0] = T.A[j][0];
                             T1.A[k][1] = T.A[j][1];
-                            T1.A[k][2] = T.A[j][2]+ this.A[i][2];
+                            T1.A[k][2] = T.A[j][2] + this.A[i][2];
                             j++;
                             i++;
                             k++;
-                        }else
+                        } else
                         {
-                            if(this.A[i][1] < T.A[j][1])
+                            if (this.A[i][1] < T.A[j][1])
                             {
                                 T1.A[k][0] = this.A[i][0];
                                 T1.A[k][1] = this.A[i][1];
                                 T1.A[k][2] = this.A[i][2];
                                 i++;
                                 k++;
-                            }else
+                            } else
                             {
                                 T1.A[k][0] = T.A[j][0];
                                 T1.A[k][1] = T.A[j][1];
                                 T1.A[k][2] = T.A[j][2];
                                 j++;
                                 k++;
-                                
+
                             }
                         }
                     }
                 }
             }
         }
-        while(i<=this.A[0][2])
+        while (i <= this.A[0][2])
         {
             T1.A[k][0] = this.A[i][0];
             T1.A[k][1] = this.A[i][1];
@@ -146,7 +145,7 @@ public class Tripleta {
             i++;
             k++;
         }
-        while(j<=T.A[0][2])
+        while (j <= T.A[0][2])
         {
             T1.A[k][0] = T.A[j][0];
             T1.A[k][1] = T.A[j][1];
@@ -154,20 +153,47 @@ public class Tripleta {
             j++;
             k++;
         }
-        T1.A[0][2]=k-1;
-        T1.RedimencionarP(k-1);
+        T1.A[0][2] = k - 1;
+        T1.RedimencionarP(k - 1);
         T1.Mostrar();
     }
+
+public void Multiplicar(Tripleta T) {
+    // Obtener las dimensiones de las matrices
     
-    public void Multiplicar(Tripleta T)
-    {
+    int k=1,datos = this.A[0][2] * T.A[0][2]; 
+    Tripleta T1 = new Tripleta(datos);
+    
+    T1.A[0][0] = this.A[0][0];
+    T1.A[0][1] = T.A[0][1];
+    T1.A[0][2] = datos;
+    
+    for (int i = 1; i <= this.A[0][0]; i++) {
+          
+      for (int j = 1; j <= T.A[j][1]; j++) {
+              
+        int producto = this.A[i][2]* T.A[j][2];
         
-    }
-    public void Insertar()
-    {
         
+        if (producto != 0) {
+          T1.A[k][0] = this.A[i][0]; 
+          T1.A[k][1] = T.A[j][1]; 
+          T1.A[k][2] = producto; 
+          k++; 
+          
+      }
+
     }
     
+}
+    T1.RedimencionarP(k-1);
+    T1.Mostrar();
+}
+    public void Insertar() {
+
+    }
+    
+   
     public void Eliminar()
     {
         

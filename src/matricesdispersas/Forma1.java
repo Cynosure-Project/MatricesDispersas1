@@ -1,4 +1,3 @@
-
 package matricesdispersas;
 
 import javax.swing.JOptionPane;
@@ -6,29 +5,33 @@ import Utilidades.Nodo;
 
 /**
  *
+ *
+ */
+public class Forma1 {
 
- */public class Forma1 {
     private Nodo Punta;
 
-    public Forma1() 
-    {
-        Punta= null;
+    public Forma1() {
+        Punta = null;
     }
-   
-    public void Crear (int M[][], int f,int c)
-    {
+
+    public void Crear(int Mat[][], int f, int c) {
         int Mayor;
-        if (f < c)
-            Mayor = c;
-        else
+
+        if (f > c) {
             Mayor = f;
-        Paso1(Mayor,f,c);
-        Paso2(M);
+        } else {
+            Mayor = c;
+        }
+
+        Paso1(Mayor, f, c);
+        Paso2(Mat);
         Paso3();
     }
-    public void Paso1(int Mayor ,int n, int m) {
-       Nodo x, P;
-        Punta = new Nodo(0, n, m);
+
+    public void Paso1(int Mayor, int f, int c) {
+        Nodo x, P;
+        Punta = new Nodo(0, f, c);
         P = Punta;
 
         for (int i = 0; i < Mayor; i++) {
@@ -39,17 +42,21 @@ import Utilidades.Nodo;
             P = x;
 
         }
-        P.setLiga(Punta);        
+        P.setLiga(Punta);
     }
-    private void Paso2(int M[][])
-    {
-       Nodo x, P, Q;
+
+
+    private void Paso2(int M[][]) {
+        Nodo x, P, Q;
         P = Punta.getLiga();
         Q = P;
 
-        for (int i = 0; i < M.length; i++) {
-            for (int j = 0; j < M[i].length; j++) {
-                if (M[i][j] != 0) {
+        for (int i = 0; i < M.length; i++)
+        {
+            for (int j = 0; j < M[i].length; j++)
+            {
+                if (M[i][j] != 0)
+                {
 
                     x = new Nodo(M[i][j], i, j);
                     Q.setLf(x);
@@ -60,18 +67,16 @@ import Utilidades.Nodo;
             P = P.getLiga();
             Q = P;
         }
-        
+
     }
-    private void Paso3() {
-        Nodo P = Punta.getLiga(), RC = P, Q = P.getLf(), A = Q;
-        while (RC != Punta)
-        {
-            while (P != Punta)
-            {
-                while (Q != P)
-                {
-                    if (RC.getColumna() == Q.getColumna())
-                    {
+
+    public void Paso3() {
+        Nodo RC= Punta.getLiga(), P=RC, Q = P.getLf(),A=RC;
+
+        while (RC != Punta) {
+            while (P != Punta) {
+                while (Q != P) {
+                    if (RC.getColumna() == Q.getColumna()) {
                         A.setLc(Q);
                         A = Q;
                     }
@@ -87,41 +92,65 @@ import Utilidades.Nodo;
             Q = P.getLf();
         }
     }
-
- public void SumarFilas() {
-        int i=0, vc[] = new int[Punta.getFila()];
-        Nodo P=Punta.getLiga(),Q=P.getLf();
-        
+    
+     public void SumarColumnas() {
+        int[] vc = new int[Punta.getColumna()];
+        Nodo P = Punta.getLiga();
+        Nodo Q = P.getLc();
         String s = "";
-        while (P!=Punta)
+        while (P != Punta)
         {
-            while(Q!=P)
+
+            while (Q != P)
             {
-                vc[i] += Q.getDato();
+                vc[Q.getColumna()] += Q.getDato();
+                Q = Q.getLc();
+
+            }
+            P = P.getLiga();
+            Q = P.getLc();
+
+        }
+        for (int i = 0; i < vc.length; i++)
+        {
+            s = s + "Suma de columna " + (i + 1) + ": " + vc[i] + "\n";
+        }
+        JOptionPane.showMessageDialog(null, s);
+    }
+    public void SumarFilas() {
+        int i = 0, vf[] = new int[Punta.getFila()];
+        Nodo P = Punta.getLiga(), Q = P.getLf();
+        String s = "";
+        while (P != Punta)
+        {
+            while (Q != P)
+            {
+                vf[i] += Q.getDato();
                 Q = Q.getLf();
             }
-            
+
             i++;
             P = P.getLiga();
             Q = P.getLf();
         }
-        for (i = 0; i < vc.length; i++)
+        for (i = 0; i < vf.length; i++)
         {
-            s = s + "Suma de fila " + (i + 1) + ": " + vc[i] + "\n";
+            s = s + "Suma de fila " + (i + 1) + ": " + vf[i] + "\n";
 
         }
         JOptionPane.showMessageDialog(null, s);
     }
-   
+
     public void MostrarF1() {
         Nodo P, Q;
-        String s="["+Punta.getFila()+"][" + Punta.getColumna() +"]\n";
-        boolean r=true;
-        int i=0;
+        String s = "[" + Punta.getFila() + "][" + Punta.getColumna() + "]\n";
+        boolean r = true;
+        int i = 0;
         P = Punta.getLiga();
         Q = P.getLf();
-        while(P!=Punta) {
-        
+        while (P != Punta)
+        {
+
             while (Q != P)
             {
                 if (r)
@@ -151,6 +180,5 @@ import Utilidades.Nodo;
         }
         JOptionPane.showMessageDialog(null, s, "Mostrar Tripleta Forma 1", 3);
     }
-    
-}
 
+}

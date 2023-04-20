@@ -186,7 +186,7 @@ public class MatricesDispersas {
                             }
                             case 3 ->
                             {
-                                //.SumarColumnas();
+                                F1.SumarColumnas();
                             }
                             case 4->
                             {
