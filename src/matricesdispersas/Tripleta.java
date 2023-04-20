@@ -281,12 +281,27 @@ public class Tripleta {
             {
                 if(k+1 > A[0][2])
                 {
-                    RedimensionarG();
+                    if(A[k][0] > f)
+                    {
+                        RedimensionarG();
 
-                    A[k+1][0] = f; //
-                    A[k+1][1] = c;
-                    A[k+1][2] = d;
-                    b = false;
+                        A[k+1][0] = A[k][0];
+                        A[k+1][1] = A[k][1];
+                        A[k+1][2] = A[k][2];
+                        A[k][0] = f;
+                        A[k][1] = c;
+                        A[k][2] = d;
+                        b = false;
+                    }
+                    else
+                    {
+                        RedimensionarG();
+
+                        A[k+1][0] = f; 
+                        A[k+1][1] = c;
+                        A[k+1][2] = d;
+                        b = false;
+                    }
 
                     for(i=1; i<=A[0][2]; i++)
                     {
