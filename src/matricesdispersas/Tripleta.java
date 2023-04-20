@@ -39,7 +39,7 @@ public class Tripleta {
             {
                 if (Mat[i][j] != 0)
                 {
-                    A[k][0] = i;
+                    A[k][0] = i;//
                     A[k][1] = j;
                     A[k][2] = Mat[i][j];
                     
@@ -136,13 +136,31 @@ public class Tripleta {
         A = T.A;
     }
     
-    public void Insertar(int d, int f, int c, int[][] M){
+    public void Insertar(int[][] M){
         boolean b, b1;
-        int k, i;
+        int k, i, d, f, c;
+        
+        d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese dato a insertar: "));
+                                
+        do
+        {
+            f = Integer.parseInt(JOptionPane.showInputDialog("Ingrese fila a colocar dato: "));
+            if(f<0 || f>A[0][0])
+            JOptionPane.showMessageDialog(null, "Ingrese una fila que este entre las dimensiones de la matriz: ");
+        }
+        while(f<0 || f>A[0][0]);
+
+        do
+        {
+            c = Integer.parseInt(JOptionPane.showInputDialog("Ingrese columna a colocar dato: "));
+            if(c<0 || c>A[0][1])
+            JOptionPane.showMessageDialog(null, "Ingrese una columna que este entre las dimensiones de la matriz: ");
+        }
+        while(c<0 || c>A[0][1]);
         
         b = true;
         M[f][c] = d;
-        
+       
         for(k=1; k<=A[0][2] && b; k++)
         {
             b1 = true;
@@ -158,12 +176,27 @@ public class Tripleta {
                 {
                     if(k+1 > A[0][2])
                     {
-                        RedimensionarG();
+                        if(A[k][1] > c)
+                        {
+                            RedimensionarG();
+                            
+                            A[k+1][0] = A[k][0];
+                            A[k+1][1] = A[k][1];
+                            A[k+1][2] = A[k][2];
+                            A[k][0] = f;
+                            A[k][1] = c;
+                            A[k][2] = d;
+                            b = false;
+                        }
+                        else
+                        {
+                            RedimensionarG();
 
-                        A[k+1][0] = f;
-                        A[k+1][1] = c;
-                        A[k+1][2] = d;
-                        b = false;
+                            A[k+1][0] = f;
+                            A[k+1][1] = c;
+                            A[k+1][2] = d;
+                            b = false;
+                        }
 
                         for(i=1; i<=A[0][2]; i++)
                         {

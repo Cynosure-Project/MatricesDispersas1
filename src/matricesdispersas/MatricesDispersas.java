@@ -13,8 +13,11 @@ public class MatricesDispersas {
         Validar Val = new Validar();
         int M[][], N[][], M2[][], op, d, d1, d2;
         Tripleta T, T2, T3;
+        boolean b;
+        int f, c;
         
-        M = m.ConstruirRandom(0,0);
+        //M = m.ConstruirRandom(0,0);
+        M = m.ConstruirMatrizArchivo();
         JOptionPane.showMessageDialog(null, "Se creará una tripleta a partir de la siguiente matriz", "Crear Tripleta", 3);
         m.Mostrar(M);
         d = m.DatosDiferentesDeCero();
@@ -28,6 +31,7 @@ public class MatricesDispersas {
         d2 = m.DatosDiferentesDeCero();
         T3 = new Tripleta(d2);
         T3.Construir(M2, d2);
+        b = true;
 
         do
         {
@@ -80,11 +84,7 @@ public class MatricesDispersas {
                             }
                             case 4 ->
                             {
-                                d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese dato a insertar: "));
-                                int f = Integer.parseInt(JOptionPane.showInputDialog("Ingrese fila a colocar dato: "));
-                                int c = Integer.parseInt(JOptionPane.showInputDialog("Ingrese columna a colocar dato: "));
-        
-                                T.Insertar(d, f, c, M);
+                                T.Insertar(M);
                                 m.Mostrar(M);
                             }
                             case 5 ->
