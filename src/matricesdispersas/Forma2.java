@@ -31,9 +31,9 @@ public class Forma2
         Nodo x, p;
         p = Punta;
         
-        for (int i = 0; i < M.length; i++) {
-            for (int j = 0; j < M[i].length; j++) {
-                if (M[i][j] != 0) {
+        for(int i = 0; i < M.length; i++) {
+            for(int j = 0; j < M[i].length; j++) {
+                if(M[i][j] != 0) {
                     x = new Nodo(M[i][j], i, j);
                     x.setLf(x);
                     x.setLc(x);
@@ -152,9 +152,103 @@ public class Forma2
     }
    
     public void Sumar(Forma2 F2){
+        Nodo p = new Nodo();
+        Nodo q = new Nodo();
+        Nodo x = new Nodo();
+        Nodo a = new Nodo();
+        
         if(Punta.getFila()==F2.Punta.getFila() && Punta.getColumna()==F2.Punta.getColumna())
         {
+            Forma2 Fs = new Forma2(Punta.getFila(), Punta.getColumna());
+            Fs.Punta.setFila(Punta.getFila());
+            Fs.Punta.setColumna(Punta.getColumna());
+            p = Punta.getLf();
+            q = F2.Punta.getLf();
+            Fs.Punta = x;
             
+            do
+            {
+                if(p.getFila() == q.getFila())
+                {
+                    if(p.getColumna() == q.getColumna())
+                    {
+                        a = x;
+                        x = new Nodo();
+                        a.setLf(x);
+                        x.setFila(p.getFila());
+                        x.setColumna(p.getColumna());
+                        x.setDato(p.getDato() + q.getDato());
+                    }
+                    else
+                    {
+                        if(p.getColumna() < q.getColumna())
+                        {
+                            a = x;
+                            x = new Nodo();
+                            a.setLf(x);
+                            x.setFila(p.getFila());
+                            x.setColumna(p.getColumna());
+                            x.setDato(p.getDato());
+                        }
+                        else
+                        {
+                            if (q.getColumna() < p.getColumna())
+                            {
+                                a = x;
+                                x = new Nodo();
+                                a.setLf(x);
+                                x.setFila(q.getFila());
+                                x.setColumna(q.getColumna());
+                                x.setDato(p.getDato());
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if(p.getFila() < q.getFila())
+                    {
+                        a = x;
+                        x = new Nodo();
+                        a.setLf(x);
+                        x.setFila(p.getFila());
+                        x.setColumna(p.getColumna());
+                        x.setDato(p.getDato());
+                    }
+                    else
+                    {
+                        if(q.getFila() < p.getFila())
+                        {
+                            a = x;
+                            x = new Nodo();
+                            a.setLf(x);
+                            x.setFila(q.getFila());
+                            x.setColumna(q.getColumna());
+                            x.setDato(p.getDato());
+                        }
+                    }
+                }
+            }
+            while(p!=Punta || q!=F2.Punta);
+            
+            int cf = 0, cc = 0;
+            p = Punta;
+            a = p;
+            
+            do
+            {
+                p = p.getLf();
+                
+                while(Punta.getColumna() <= cc)
+                {
+                    a.setLc(p);
+                    a = p;
+                    cc++;
+                }
+            }
+            while(p != Punta);
+            
+            Fs.MostrarF2();
         }
         else
         {

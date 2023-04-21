@@ -11,14 +11,15 @@ public class MatricesDispersas {
         Matriz n = new Matriz(), m = new Matriz(), m2 = new Matriz();
         Forma1 F1= new Forma1();
         Forma2 F2 = new Forma2(m.getn(), m.getm());
+        Forma2 F22 = new Forma2(m.getn(), m.getm());
         Validar Val = new Validar();
         int M[][], N[][], M2[][], op, d, d1, d2;
         Tripleta T, T2, T3;
         boolean b;
         int f, c;
         
-        //M = m.ConstruirRandom(0,0);
-        M = m.ConstruirMatrizArchivo();
+        M = m.ConstruirRandom(0,0);
+        //M = m.ConstruirMatrizArchivo();
         JOptionPane.showMessageDialog(null, "Se creará cada forma a partir de la siguiente matriz: ", "Crear Tripleta", 3);
         m.Mostrar(M);
         
@@ -29,6 +30,8 @@ public class MatricesDispersas {
         F1.Crear(m.getM(), m.getn(), m.getm());
         
         F2.Crear(m.getM());
+        M = m.ConstruirRandom(0,0);
+        F22.Crear(m.getM());
         
         N = m.ConstruirRandom(T.getA(0, 0), T.getA(0, 1));
         d1 = m.DatosDiferentesDeCero();
@@ -209,6 +212,60 @@ public class MatricesDispersas {
                             case 6 ->
                             {
                                 m.Mostrar(m.getM());
+                            }
+                            case 0 ->
+                            {
+
+                            }
+
+                            default ->
+                            {
+
+                            }
+                        }
+                    } while (op != 8);
+                }
+                case 3 ->
+                {
+                    do
+                    {
+
+                        op = Val.ValidarInt("""   
+                                                Menú Forma 2 
+                                                                                                                                                  
+                                            1. Mostrar Forma 2.
+                                            2. Suma de filas.
+                                            3. Suma de Columnas.
+                                            4. Insertar un dato.
+                                            5. Eliminar un dato.
+                                            6. Ver matriz inicial
+                                            7. Suma
+                                            0. Volver al menú principal.
+                                            """);
+                        switch (op)
+                        {
+
+                            case 1 ->
+                            {
+                                F2.MostrarF2();
+                            }
+                            case 3 ->
+                            {
+                                //.SumarColumnas();
+                            }
+                            case 4 ->
+                            {
+                                //F1.Insertar(m.getM());
+                            }
+                            case 6 ->
+                            {
+                                //m.Mostrar(m.getM());
+                            }
+                            case 7 ->
+                            {
+                                F2.MostrarF2();
+                                F22.MostrarF2();
+                                F2.Sumar(F22);
                             }
                             case 0 ->
                             {
