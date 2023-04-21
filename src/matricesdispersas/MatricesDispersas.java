@@ -77,7 +77,10 @@ public class MatricesDispersas {
                                 T.SumarColumnas();
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8967e73 (Hola)
                             case 5->
                             {
                                 T.Eliminar();

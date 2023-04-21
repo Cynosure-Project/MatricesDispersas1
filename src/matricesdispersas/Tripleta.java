@@ -74,8 +74,11 @@ public class Tripleta {
         }
         for (int i = 0; i < vf.length; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             s = s + "Suma de columna " + (i + 1) + ": " + vf[i] + "\n";
 =======
+=======
+>>>>>>> parent of 8967e73 (Hola)
             s = s + "Suma de fila " + (i + 1) + ": " + vf[i] + "\n";
 >>>>>>> parent of 8967e73 (Hola)
         }
@@ -162,6 +165,7 @@ public class Tripleta {
         T1.Mostrar();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     public Tripleta Redimencionar(int d) {
         int i, j, k=0;
@@ -209,6 +213,42 @@ public void Multiplicar(Tripleta T) {
 }
     public void Insertar() {
 
+=======
+
+public void Multiplicar(Tripleta T) {
+    // Obtener las dimensiones de las matrices
+    
+    int k=1,datos = this.A[0][2] * T.A[0][2]; 
+    Tripleta T1 = new Tripleta(datos);
+    
+    T1.A[0][0] = this.A[0][0];
+    T1.A[0][1] = T.A[0][1];
+    T1.A[0][2] = datos;
+    
+    for (int i = 1; i <= this.A[0][0]; i++) {
+          
+      for (int j = 1; j <= T.A[j][1]; j++) {
+              
+        int producto = this.A[i][2]* T.A[j][2];
+        
+        
+        if (producto != 0) {
+          T1.A[k][0] = this.A[i][0]; 
+          T1.A[k][1] = T.A[j][1]; 
+          T1.A[k][2] = producto; 
+          k++; 
+          
+      }
+
+    }
+    
+}
+    T1.RedimencionarP(k-1);
+    T1.Mostrar();
+}
+    public void Insertar() {
+
+>>>>>>> parent of 8967e73 (Hola)
     }
     
    
