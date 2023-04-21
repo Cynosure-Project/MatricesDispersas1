@@ -10,6 +10,7 @@ public class MatricesDispersas {
     public static void main(String[] args) {
         Matriz n = new Matriz(), m = new Matriz(), m2 = new Matriz();
         Forma1 F1= new Forma1();
+        Forma2 F2 = new Forma2(m.getn(), m.getm());
         Validar Val = new Validar();
         int M[][], N[][], M2[][], op, d, d1, d2;
         Tripleta T, T2, T3;
@@ -18,11 +19,17 @@ public class MatricesDispersas {
         
         //M = m.ConstruirRandom(0,0);
         M = m.ConstruirMatrizArchivo();
-        JOptionPane.showMessageDialog(null, "Se creará una tripleta a partir de la siguiente matriz", "Crear Tripleta", 3);
+        JOptionPane.showMessageDialog(null, "Se creará cada forma a partir de la siguiente matriz: ", "Crear Tripleta", 3);
         m.Mostrar(M);
+        
         d = m.DatosDiferentesDeCero();
         T = new Tripleta(d);
         T.Construir(M, d);
+        
+        F1.Crear(m.getM(), m.getn(), m.getm());
+        
+        F2.Crear(m.getM());
+        
         N = m.ConstruirRandom(T.getA(0, 0), T.getA(0, 1));
         d1 = m.DatosDiferentesDeCero();
         T2 = new Tripleta(d1);
@@ -84,8 +91,8 @@ public class MatricesDispersas {
                             }
                             case 4 ->
                             {
-                                T.Insertar(M);
-                                m.Mostrar(M);
+                                T.Insertar(m.getM());
+                                m.Mostrar(m.getM());
                             }
                             case 5 ->
                             {
@@ -93,7 +100,7 @@ public class MatricesDispersas {
                             }
                             case 6 ->
                             {
-                                m.Mostrar(M);
+                                m.Mostrar(m.getM());
                             }
                             case 7 ->
                             {
@@ -169,13 +176,11 @@ public class MatricesDispersas {
                 }
                 case 2 ->
                 {
-                    //F1.Crear(M);
-                    
                     do
                     {
 
                         op = Val.ValidarInt("""   
-                                                Menú Tripletas Forma 1 
+                                                Menú Forma 1 
                                                                                                                                                   
                                             1. Mostrar Forma 1
                                             2. Suma de filas.
@@ -191,15 +196,19 @@ public class MatricesDispersas {
 
                             case 1 ->
                             {
-                                //F1.Mostrar();
+                                F1.MostrarF1();
                             }
                             case 3 ->
                             {
                                 //.SumarColumnas();
                             }
+                            case 4 ->
+                            {
+                                F1.Insertar(m.getM());
+                            }
                             case 6 ->
                             {
-                                m.Mostrar(M);
+                                m.Mostrar(m.getM());
                             }
                             case 0 ->
                             {

@@ -49,74 +49,19 @@ public class Tripleta {
         }
     }
     
-    /*public void SumarFila(){
-        int V[], k;
-        
-        V = new int[A[0][0]];
-        
-        for (k=1; k<=A[0][2]; k++)
-        {
-            if (A[k][0]==0)
-            {
-                V[0] += A[k][2];
-            }
-            else
-            {
-                if (A[k][0] == 1)
-                {
-                    V[1] += A[k][2];
-                }
-                else
-                {
-                    if (A[k][0] == 2)
-                    {
-                        V[2] += A[k][2];
-                    }
-                }
-            }
-        }
-        
-        JOptionPane.showMessageDialog(null, "La suma de la primer fila: " + V[0] + "segunda: " + V[1] + " y tercera: " + V[2]);
-    }*/
-    
-    /*public void SumarColumna(){
-        int V[], k;
-        
-        V = new int[A[0][0]];
-        
-        for (k=1; k<=A[0][2]; k++)
-        {
-            if (A[k][1] == 0)
-            {
-                V[0] += A[k][2];
-            }
-            else
-            {
-                if (A[k][0] == 1)
-                {
-                    V[1] += A[k][2];
-                }
-                else
-                {
-                    if (A[k][0] == 2)
-                    {
-                        V[2] += A[k][2];
-                    }
-                }
-            }
-        }
-    }*/
-    
     public void Mostrar() {
         String s = "";
+        
         for (int[] A1 : A)
         {
             for (int j = 0; j < A[0].length; j++)
             {
                 s = s + "[ " + String.format("%4d", A1[j]) + " ]";
             }
+            
             s = s + "\n";
         }
+        
         JOptionPane.showMessageDialog(null, s, "Tripleta", 3);
     }
     
