@@ -1,12 +1,5 @@
 
 package Utilidades;
-
-import matricesdispersas.*;
-
-/**
- *
- * @author Mariana M
- */
 public class Nodo {
     
     
