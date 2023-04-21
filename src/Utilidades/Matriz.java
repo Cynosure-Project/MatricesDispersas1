@@ -13,6 +13,10 @@ public class Matriz {
         m = (int) (Math.random() * (4 - 2 + 1) + 2);
         M = new int[n][m];
     }
+    public Matriz(int [][]M) {
+
+        this.M=M;
+    }
 
     public int getn() {
         return n;

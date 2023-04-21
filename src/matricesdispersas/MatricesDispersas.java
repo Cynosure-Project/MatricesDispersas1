@@ -75,9 +75,19 @@ public class MatricesDispersas {
                             {
                                 T.SumarColumnas();
                             }
+                            case 4->
+                            {
+                                d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese dato a insertar: "));
+                                int f = Integer.parseInt(JOptionPane.showInputDialog("Ingrese fila a colocar dato: "));
+                                int c = Integer.parseInt(JOptionPane.showInputDialog("Ingrese columna a colocar dato: "));
+
+                                T.Insertar(d, f, c, M);
+                                m.Mostrar(M);
+                                
+                            }
                             case 5->
                             {
-                                T.Eliminar();
+                                T.Eliminar(M);
                             }
                             case 6 ->
                             {
@@ -111,6 +121,7 @@ public class MatricesDispersas {
                                                                                 Resultado de la tripleta suma
                                                                                 """, "Resultado operaciones con tripletas", 3);
                                             T.Sumar(T2);
+                                          
                                         }
                                         case 2 ->
                                         {
@@ -131,6 +142,12 @@ public class MatricesDispersas {
                                                                                 """, "Operaciones con tripletas", 3);
                                             T.Mostrar();
                                             T2.Mostrar();
+                                            
+                                            JOptionPane.showMessageDialog(null, """  
+                                                                                Tripletas utilizadas para la Multiplicación.
+                                                                                """, "Operaciones con tripletas", 3);
+                                            T.Mostrar();
+                                            T3.Mostrar();
                                         }
                                         case 4 ->
                                         {}
