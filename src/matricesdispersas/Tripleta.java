@@ -73,7 +73,11 @@ public class Tripleta {
             k++;
         }
         for (int i = 0; i < vf.length; i++) {
+<<<<<<< HEAD
             s = s + "Suma de columna " + (i + 1) + ": " + vf[i] + "\n";
+=======
+            s = s + "Suma de fila " + (i + 1) + ": " + vf[i] + "\n";
+>>>>>>> parent of 8967e73 (Hola)
         }
         JOptionPane.showMessageDialog(null, s);
     }
@@ -157,6 +161,7 @@ public class Tripleta {
         T1= T1.Redimencionar(k-1);
         T1.Mostrar();
     }
+<<<<<<< HEAD
     
     public Tripleta Redimencionar(int d) {
         int i, j, k=0;
@@ -169,6 +174,81 @@ public class Tripleta {
             T.A[k][2] = this.A[j][2];
             k++;
         }
+=======
+
+public void Multiplicar(Tripleta T) {
+    // Obtener las dimensiones de las matrices
+    
+    int k=1,datos = this.A[0][2] * T.A[0][2]; 
+    Tripleta T1 = new Tripleta(datos);
+    
+    T1.A[0][0] = this.A[0][0];
+    T1.A[0][1] = T.A[0][1];
+    T1.A[0][2] = datos;
+    
+    for (int i = 1; i <= this.A[0][0]; i++) {
+          
+      for (int j = 1; j <= T.A[j][1]; j++) {
+              
+        int producto = this.A[i][2]* T.A[j][2];
+        
+        
+        if (producto != 0) {
+          T1.A[k][0] = this.A[i][0]; 
+          T1.A[k][1] = T.A[j][1]; 
+          T1.A[k][2] = producto; 
+          k++; 
+          
+      }
+
+    }
+    
+}
+    T1.RedimencionarP(k-1);
+    T1.Mostrar();
+}
+    public void Insertar() {
+
+    }
+    
+   
+    public void Eliminar()
+    {
+        
+        Validar val= new Validar();
+        boolean b=true;
+        Tripleta T;
+        int c,k=0,f;
+        f= val.Validar_int("Ingresa el número de fila donde está ubicado el dato");
+        c = val.Validar_int("Ingresa el número de columna donde está ubicado el dato");
+        if(f>=this.A[0][0]||c>=this.A[0][1])
+        {
+            JOptionPane.showMessageDialog(null, "Ha ingresado un número mayor, al número de filas o columnas de la matriz", "Dato incorrecto", 0);
+        }
+        else
+        {
+            while(k<=this.A[0][2]&&b)
+            {
+                if(this.A[k][0]==f&& this.A[k][1]==c)
+                {
+                    b=false;
+                    this.A[k][2]=0;
+                    this.A[0][2]-=1;
+                    this.RedimencionarP(this.A[0][2]);
+                }
+                k++;
+            }
+            if(b)
+            {
+                JOptionPane.showMessageDialog(null, "No existe dato en esta posición", "Dato no encontrado", 2);
+            }else
+            {
+                JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente", "Dato encontrado", 3);
+            }
+            
+        }
+        this.Mostrar();
+>>>>>>> parent of 8967e73 (Hola)
         
         return T;
     }
