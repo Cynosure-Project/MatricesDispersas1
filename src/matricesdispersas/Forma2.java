@@ -264,13 +264,13 @@ public class Forma2
             x.setLf(Fs.Punta);
             
             c = 0;
-            a = Punta;
+            a = Fs.Punta;
             
             while(c <= Fs.Punta.getColumna())
             {
                 p = Fs.Punta.getLf();
                 
-                while(p != Punta);
+                while(p != Fs.Punta);
                 {
                     if(p.getColumna() == c)
                     {
