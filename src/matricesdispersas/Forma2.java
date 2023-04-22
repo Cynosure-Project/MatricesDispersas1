@@ -170,7 +170,7 @@ public class Forma2
                 a = x;
                 x = new Nodo();
                 
-                if(p!=Punta && q!=Punta)
+                if(p!=Punta && q!=F2.Punta)
                 {
                     if(p.getFila() == q.getFila())
                     {
