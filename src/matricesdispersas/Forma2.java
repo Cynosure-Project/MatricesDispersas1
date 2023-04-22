@@ -163,48 +163,72 @@ public class Forma2
             Forma2 Fs = new Forma2(Punta.getFila(), Punta.getColumna());
             p = Punta.getLf();
             q = F2.Punta.getLf();
-            Fs.Punta = x;
+            x = Fs.Punta;
             
             do
             {
-                if(p.getFila() == q.getFila())
+                a = x;
+                x = new Nodo();
+                
+                if(p!=Punta && q!=Punta)
                 {
-                    if(p.getColumna() == q.getColumna())
+                    if(p.getFila() == q.getFila())
                     {
-                        a = x;
-                        x = new Nodo();
-                        a.setLf(x);
-                        x.setFila(p.getFila());
-                        x.setColumna(q.getColumna());
-                        x.setDato(p.getDato() + q.getDato());
-                        
-                        p = p.getLf();
-                        q = q.getLf();
+                        if(p.getColumna() == q.getColumna())
+                        {
+                            a.setLf(x);
+                            x.setFila(p.getFila());
+                            x.setColumna(q.getColumna());
+                            x.setDato(p.getDato() + q.getDato());
+
+                            p = p.getLf();
+                            q = q.getLf();
+                        }
+                        else
+                        {
+                            if(p.getColumna() < q.getColumna())
+                            {
+                                a.setLf(x);
+                                x.setFila(p.getFila());
+                                x.setColumna(p.getColumna());
+                                x.setDato(p.getDato());
+
+                                p = p.getLf();
+                            }
+                            else
+                            {
+                                if (q.getColumna() < p.getColumna())
+                                {
+                                    a.setLf(x);
+                                    x.setFila(q.getFila());
+                                    x.setColumna(q.getColumna());
+                                    x.setDato(q.getDato());
+
+                                    q = q.getLf();
+                                }
+                            }
+                        }
                     }
                     else
                     {
-                        if(p.getColumna() < q.getColumna())
+                        if(p.getFila() < q.getFila())
                         {
-                            a = x;
-                            x = new Nodo();
                             a.setLf(x);
                             x.setFila(p.getFila());
                             x.setColumna(p.getColumna());
                             x.setDato(p.getDato());
-                            
+
                             p = p.getLf();
                         }
                         else
                         {
-                            if (q.getColumna() < p.getColumna())
+                            if(q.getFila() < p.getFila())
                             {
-                                a = x;
-                                x = new Nodo();
                                 a.setLf(x);
                                 x.setFila(q.getFila());
                                 x.setColumna(q.getColumna());
                                 x.setDato(q.getDato());
-                                
+
                                 q = q.getLf();
                             }
                         }
@@ -212,29 +236,25 @@ public class Forma2
                 }
                 else
                 {
-                    if(p.getFila() < q.getFila())
+                    if(p != Punta)
                     {
-                        a = x;
-                        x = new Nodo();
                         a.setLf(x);
                         x.setFila(p.getFila());
                         x.setColumna(p.getColumna());
                         x.setDato(p.getDato());
-                        
-                        p = p.getLc();
+
+                        p = p.getLf();
                     }
                     else
                     {
-                        if(q.getFila() < p.getFila())
+                        if(q != F2.Punta)
                         {
-                            a = x;
-                            x = new Nodo();
                             a.setLf(x);
                             x.setFila(q.getFila());
                             x.setColumna(q.getColumna());
                             x.setDato(q.getDato());
-                            
-                            q = q.getLc();
+
+                            q = q.getLf();
                         }
                     }
                 }
@@ -244,21 +264,27 @@ public class Forma2
             x.setLf(Fs.Punta);
             
             c = 0;
-            p = Fs.Punta;
+            a = Punta;
             
             while(c <= Fs.Punta.getColumna())
             {
-                a = p;
-                p = p.getLf();
+                p = Fs.Punta.getLf();
                 
-                if(p.getColumna() == c)
+                while(p != Punta);
                 {
-                    a.setLc(p);
-                    c++;
+                    if(p.getColumna() == c)
+                    {
+                        a.setLc(p);
+                        a = p;
+                    }
+                    
+                    p = p.getLf();
                 }
+                
+                c++;
             }
             
-            p.setLc(Fs.Punta);
+            a.setLc(Fs.Punta);
             Fs.MostrarF2();
         }
         else

@@ -10,8 +10,6 @@ public class MatricesDispersas {
     public static void main(String[] args) {
         Matriz n = new Matriz(), m = new Matriz(), m2 = new Matriz();
         Forma1 F1= new Forma1();
-        Forma2 F2 = new Forma2(m.getn(), m.getm());
-        Forma2 F22 = new Forma2(m.getn(), m.getm());
         Validar Val = new Validar();
         int M[][], N[][], M2[][], op, d, d1, d2;
         Tripleta T, T2, T3;
@@ -24,6 +22,7 @@ public class MatricesDispersas {
         M = m.ConstruirMatrizArchivo("src/Utilidades/Matriz.txt");
         m.setM(M);
         m.Mostrar(M);
+        Forma2 F2 = new Forma2(m.getn(), m.getm());
         F2.Crear(m.getM());
         
         /*d = m.DatosDiferentesDeCero();
@@ -35,6 +34,7 @@ public class MatricesDispersas {
         N = n.ConstruirMatrizArchivo("src/Utilidades/Matriz0.txt");
         n.setM(N);
         n.Mostrar(N);
+        Forma2 F22 = new Forma2(n.getn(), n.getm());
         F22.Crear(n.getM());
         
         /*N = m.ConstruirRandom(T.getA(0, 0), T.getA(0, 1));
