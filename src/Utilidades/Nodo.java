@@ -3,8 +3,8 @@ package Utilidades;
 
 public class Nodo {
     
-    private int Dato,fila,columna;
-    private  Nodo Liga,Lf,Lc;
+    private int Dato, fila, columna;
+    private  Nodo Liga, Lf, Lc;
     
     public Nodo() {
         this.Dato = 0;

@@ -18,29 +18,33 @@ public class MatricesDispersas {
         boolean b;
         int f, c;
         
-        M = m.ConstruirRandom(0,0);
-        //M = m.ConstruirMatrizArchivo();
-        JOptionPane.showMessageDialog(null, "Se creará cada forma a partir de la siguiente matriz: ", "Crear Tripleta", 3);
+        JOptionPane.showMessageDialog(null, "Se creará cada forma a partir de la siguiente matriz: ", "Crear formas", 3);
+        
+        //M = m.ConstruirRandom();
+        M = m.ConstruirMatrizArchivo("src/Utilidades/Matriz.txt");
+        m.setM(M);
         m.Mostrar(M);
-        
-        d = m.DatosDiferentesDeCero();
-        T = new Tripleta(d);
-        T.Construir(M, d);
-        
-        F1.Crear(m.getM(), m.getn(), m.getm());
-        
         F2.Crear(m.getM());
-        M = m.ConstruirRandom(0,0);
-        F22.Crear(m.getM());
         
-        N = m.ConstruirRandom(T.getA(0, 0), T.getA(0, 1));
+        /*d = m.DatosDiferentesDeCero();
+        T = new Tripleta(d);
+        T.Construir(M, d);*/
+        //F1.Crear(m.getM(), m.getn(), m.getm());
+        
+        //N = n.ConstruirRandom(m.getn(),m.getm());
+        N = n.ConstruirMatrizArchivo("src/Utilidades/Matriz0.txt");
+        n.setM(N);
+        n.Mostrar(N);
+        F22.Crear(n.getM());
+        
+        /*N = m.ConstruirRandom(T.getA(0, 0), T.getA(0, 1));
         d1 = m.DatosDiferentesDeCero();
         T2 = new Tripleta(d1);
         T2.Construir(N, d1);
         M2 = m.ConstruirRandom(T.getA(0, 1), 0);
         d2 = m.DatosDiferentesDeCero();
         T3 = new Tripleta(d2);
-        T3.Construir(M2, d2);
+        T3.Construir(M2, d2);*/
         b = true;
 
         do
@@ -82,7 +86,7 @@ public class MatricesDispersas {
 
                             case 1 ->
                             {
-                                T.Mostrar();
+                                //T.Mostrar();
                             }
                             case 2->
                             {
@@ -94,7 +98,7 @@ public class MatricesDispersas {
                             }
                             case 4 ->
                             {
-                                T.Insertar(m.getM());
+                                //T.Insertar(m.getM());
                                 m.Mostrar(m.getM());
                             }
                             case 5 ->
@@ -127,7 +131,7 @@ public class MatricesDispersas {
                                             JOptionPane.showMessageDialog(null, """  
                                                                                 Se realizará la suma con la siguiente tripleta
                                                                                 """, "Operaciones con tripletas", 3);
-                                            T2.Mostrar();
+                                            //T2.Mostrar();
                                             
                                             JOptionPane.showMessageDialog(null, """  
                                                                                 Resultado de la tripleta suma
@@ -139,7 +143,7 @@ public class MatricesDispersas {
                                             JOptionPane.showMessageDialog(null, """  
                                                                                 Se realizará la multiplicación con la siguiente tripleta
                                                                                 """, "Operaciones con tripletas", 3);
-                                            T3.Mostrar();
+                                            //T3.Mostrar();
                                             
                                             JOptionPane.showMessageDialog(null, """  
                                                                                 Resultado de la tripleta multiplicación
@@ -151,8 +155,8 @@ public class MatricesDispersas {
                                             JOptionPane.showMessageDialog(null, """  
                                                                                 Tripletas utilizadas para la suma.
                                                                                 """, "Operaciones con tripletas", 3);
-                                            T.Mostrar();
-                                            T2.Mostrar();
+                                            //T.Mostrar();
+                                            //T2.Mostrar();
                                         }
                                         case 4 ->
                                         {}
@@ -223,7 +227,7 @@ public class MatricesDispersas {
 
                             }
                         }
-                    } while (op != 8);
+                    } while (op != 0);
                 }
                 case 3 ->
                 {
@@ -277,7 +281,7 @@ public class MatricesDispersas {
 
                             }
                         }
-                    } while (op != 8);
+                    } while (op != 0);
                 }
                 case 5 ->
                 {

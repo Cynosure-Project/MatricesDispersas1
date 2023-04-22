@@ -50,22 +50,40 @@ public class Matriz {
         M[i][j] = d;
     }
     
-    public int[][] ConstruirRandom(int f,int c){
+    public int[][] ConstruirRandom(){
         int i, j;
         
-        if (f!=0 && c!=0)
+        for (int k=0; k<n*m; k++)
+        {
+            i = (int) (Math.random() * ((n - 1) - 0 + 1) + 0);
+            j = (int) (Math.random() * ((m - 1) - 0 + 1) + 0);
+            
+            if (k%2 == 0)
+            {
+                M[i][j] = (int) (Math.random() * (100 - (-100) + 1) - 100);
+            } 
+            else
+            {
+                M[i][j] = 0;
+            }
+        }
+        
+        return M;
+    }
+    
+    public int[][] ConstruirRandom(int f,int c){
+        int i, j;
+          
+        if (f!=0 && c==0)
+        {
+            n = f;
+            M = new int[n][m];
+        }
+        else
         {
             n = f;
             m = c;
             M = new int[n][m];
-        } 
-        else
-        {
-            if (f!=0 && c==0)
-            {
-                n = f;
-                M = new int[n][m];
-            }
         }
         
         for (int k=0; k<n*m; k++)
@@ -119,10 +137,10 @@ public class Matriz {
         JOptionPane.showMessageDialog(null, s, "Matriz de datos aleatorios", 3);
     }
     
-    public int[][] ConstruirMatrizArchivo(){
+    public int[][] ConstruirMatrizArchivo(String d){
         try 
         {
-            BufferedReader br = new BufferedReader(new FileReader("src/Utilidades/Matriz.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(d));
             //Primera linea nos dice longitud de la matriz
             String filas = br.readLine();
             n = Integer.parseInt(filas);
@@ -135,22 +153,22 @@ public class Matriz {
             
             while(linea != null) 
             {
-                    /*
-                     * Tenemos todos los enteros JUNTOS en el String linea.
-                     * Con split() los SEPARAMOS en un array donde cada entero
-                     * es un String individual. Con un bucle, los parseamos a Integer
-                     * para guardarlos en la matriz
-                     */
-                    String[] enteros = linea.split(" ");
+                /*
+                 * Tenemos todos los enteros JUNTOS en el String linea.
+                 * Con split() los SEPARAMOS en un array donde cada entero
+                 * es un String individual. Con un bucle, los parseamos a Integer
+                 * para guardarlos en la matriz
+                 */
+                String[] enteros = linea.split(" ");
 
-                    for(int i=0; i<enteros.length; i++)
-                    {
-                        M[fila][i] = Integer.parseInt(enteros[i]);//
-                    }
+                for(int i=0; i<enteros.length; i++)
+                {
+                    M[fila][i] = Integer.parseInt(enteros[i]);//
+                }
 
-                    fila++; //Incrementamos fila para la próxima línea de enteros
+                fila++; //Incrementamos fila para la próxima línea de enteros
 
-                    linea = br.readLine(); //Leemos siguiente línea
+                linea = br.readLine(); //Leemos siguiente línea
             }
 
             br.close(); //Cerramos el lector de ficheros
